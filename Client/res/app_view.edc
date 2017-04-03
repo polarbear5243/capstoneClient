@@ -1,4 +1,0 @@
-collections {
-   base_scale: 1.8;
-   #include "../edje/login_layout.edc"
-}

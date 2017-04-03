@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<profiles version="3.0">
-<profile name="YJK">
-<profileitem ca="" distributor="0" key="C:\Users\YJK\SamsungCertificate\YJK\author.p12" password="b2voZcqcc+rmsAAa6Zb2gg==" rootca=""/>
-<profileitem ca="" distributor="1" key="C:\Users\YJK\SamsungCertificate\YJK\distributor.p12" password="b2voZcqcc+rmsAAa6Zb2gg==" rootca=""/>
-<profileitem ca="" distributor="2" key="" password="xmEcrXPl1ss=" rootca=""/>
-</profile>
-</profiles>
