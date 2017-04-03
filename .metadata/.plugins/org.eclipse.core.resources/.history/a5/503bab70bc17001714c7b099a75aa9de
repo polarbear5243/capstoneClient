@@ -1,0 +1,46 @@
+#pragma once
+#include<iostream>
+#include<string>
+#include<storage.h>
+#include<dirent.h>
+#include<unistd.h>
+
+#define FILE_DEFULT_FOLDER "MyApp"
+#define FILE_ROOT_FOLDER "/opt/usr/media"
+using namespace std;
+
+class MyFileInput{
+private:
+	ifstream file;
+	string mFilePath;
+
+public:
+	MyFileInput(string file, string a){
+
+		string defultPath = FILE_ROOT_FOLDER;
+		defultPath = defultPath + "/" + FILE_DEFULT_FOLDER;
+
+		if(access(defultPath.c_str(),F_OK) != 0){
+			mkdir(defultPath.c_str(),0755);
+		}
+
+		mFilePath = defultPath + "/" + file;
+		m_fp = fopen(mFilePath.c_str(), "w");
+
+		if(m_fp == NULL)
+			throw new exception;
+	}
+	int writeLine(string str) {
+		fprintf(m_fp,"%s\n",str.c_str());
+	    return 0;
+	}
+	int write(string str){
+		fputs("abc",m_fp);
+	}
+	void closeFile(){
+		fclose(m_fp);
+	}
+	~MyFileInput(){
+		fclose(m_fp);
+	}
+};
