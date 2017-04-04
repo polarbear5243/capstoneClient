@@ -9,6 +9,7 @@ private:
 	static Eina_Bool static_pop_cb(void *data, Elm_Object_Item *it);
 
 public:
+	NaviItem();
 	NaviItem(Evas_Object * na_it);
 	void setStyle(NaviItem item, string style);
 	void setTitleEnalble(bool enabled, bool transition);

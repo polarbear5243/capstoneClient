@@ -1,0 +1,52 @@
+group { name: "food_add_layout";
+   parts {
+      part { name: "rect_inRd";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            color: 245 245 245 255;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.10 0.025;
+            rel2.relative: 0.72 0.125;
+         }
+      }
+      part { name: "elm.swallow.searchEntry";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            rel1.relative: 0.1 0.025;
+            rel2.relative: 0.72 0.125;
+            fixed: 1 1;
+         }
+      }
+      part { name: "elm.swallow.searchBtn";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            rel1.relative: 0.74 0.025;
+            rel2.relative: 0.9 0.125;
+            fixed: 1 1;
+
+         }
+      }
+      part { name: "elm.swallow.foodList";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            rel1.relative: 0.1 0.15;
+            rel2.relative: 0.9 0.85;
+            fixed: 1 1;
+         }
+      }
+      part { name: "elm.swallow.backButtons";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            rel1.relative: 0.1 0.875;
+            rel2.relative: 0.9 0.975;
+            fixed: 1 1;
+         }
+      }
+   }
+}

@@ -21,7 +21,10 @@ RootObj::~RootObj() {
 Evas_Object * RootObj::getContent(){
 	return mContent;
 }
-
+void RootObj::getGeometry(Evas_Coord *x, Evas_Coord *y, Evas_Coord *w, Evas_Coord *h) EINA_ARG_NONNULL(1)
+{
+	evas_object_geometry_get(mContent, x, y, w, h);
+}
 void RootObj::setWeightHint(float width, float height){
 	evas_object_size_hint_weight_set(mContent,width,height);
 }

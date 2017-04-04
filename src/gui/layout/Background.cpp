@@ -19,3 +19,6 @@ void Background::setImgFile(const std::string file, const std::string group)
 {
 	elm_bg_file_set(mContent, file.c_str(), group.c_str());
 }
+void Background::add(RootObj obj){
+	elm_object_content_set(mContent, obj.getContent());
+}

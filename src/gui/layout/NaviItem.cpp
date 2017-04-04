@@ -6,7 +6,9 @@ Eina_Bool NaviItem::static_pop_cb(void *data, Elm_Object_Item *it) {
 	ui_app_exit();
 	return EINA_FALSE;
 }
-
+NaviItem::NaviItem(){
+	mContent = NULL;
+}
 NaviItem::NaviItem(Evas_Object * na_it){
 	mContent = na_it;
 }

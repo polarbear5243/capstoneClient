@@ -22,6 +22,7 @@ public:
 	RootObj();
 	virtual ~RootObj();
 	Evas_Object * getContent();
+	void getGeometry(Evas_Coord *x, Evas_Coord *y, Evas_Coord *w, Evas_Coord *h) EINA_ARG_NONNULL(1);
 	void setWeightHint(float width, float height);
 	void setAlignHint(float width, float height);
 	void setMinHint(float width, float height);

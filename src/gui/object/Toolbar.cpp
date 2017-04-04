@@ -12,6 +12,10 @@ Toolbar::Toolbar(UILayout parent)
 
 	evas_object_show(mContent);
 }
+Elm_Object_Item* Toolbar::getItemFirst()
+{
+	return elm_toolbar_first_item_get(mContent);
+}
 void Toolbar::appendItem(const char *icon, const char *label, Evas_Smart_Cb func, const void *data)
 {
 	elm_toolbar_item_append(mContent, icon, label, func, data);

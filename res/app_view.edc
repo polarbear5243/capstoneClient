@@ -1,4 +1,7 @@
 collections {
    base_scale: 1.8;
    #include "../edje/login_layout.edc"
+   #include "../edje/food_layout.edc"
+   #include "../edje/food_add_layout.edc"
+   #include "../edje/food_modify_layout.edc"
 }

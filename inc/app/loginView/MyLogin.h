@@ -11,6 +11,10 @@
 #include <app/fileIO/FileIO.h>
 #include <app/fileIO/FileOutput.h>
 #include "app/loginView/registerView/myRegister.h"
+
+#include "app/mainView/MyMainScroll.h"
+#include "app/mainView/food/foodMain/MyFoodView.h"
+
 #include "gui/object/Label.h"
 #include "gui/layout/Box.h"
 #include "gui/layout/Conformant.h"
@@ -74,15 +78,18 @@ class MyLogin
 	{
 	private:
 		UILayout mParent;
-		FileIO * mFileIO;
 		Entry * mLoginEntry;
 		Entry * mPWEntry;
 		LoginSocket * mySocket;
+		Naviframe * mNaviframe;
+		NaviItem * mNaviItem;
 	public:
-		LoginBtn(UILayout parent, Entry * loginEntry, Entry * pwEntry) : Button(parent) {
+		LoginBtn(UILayout parent,Naviframe * naviFrame ,NaviItem * naviItem, Entry * loginEntry, Entry * pwEntry) : Button(parent) {
 			mParent = parent;
 			mLoginEntry = loginEntry;
 			mPWEntry = pwEntry;
+			mNaviframe = naviFrame;
+			mNaviItem = naviItem;
 		}
 		void click()
 		{
@@ -106,6 +113,10 @@ class MyLogin
 					output.writeln(mLoginEntry->getText().c_str());
 					output.writeln(mPWEntry->getText().c_str());
 					output.close();
+
+					mNaviItem->unSetFinalNavi();
+					mNaviframe->popItem();
+					new MyFoodView(mNaviframe);
 				}
 				else if(result.at(1).compare("UnExistID") == 0)
 				{
@@ -139,7 +150,7 @@ class MyLogin
 		}
 		void click()
 		{
-			MyRegister * mMyRegister = new MyRegister(mNaviframe);
+			new MyRegister(mNaviframe);
 		}
 	};
 	class LoginView {
@@ -226,6 +237,8 @@ private:
 	LoginBtn* mLoginBtn;
 	RegisterBtn* mSignupBtn;
 
+	NaviItem mNaviItem;
+
 	string mMyEdj;
 
 protected:
@@ -235,9 +248,9 @@ protected:
 		mBg->setColor(255,255,255);
 
 		Button nullBtn;
-		NaviItem ni = parentNavi->addItem("Login",nullBtn,nullBtn,*mBg,"");
-		ni.setTitleEnalble(FALSE, FALSE);
-		ni.setFinalNavi();
+		mNaviItem = parentNavi->addItem("Login",nullBtn,nullBtn,*mBg,"");
+		mNaviItem.setTitleEnalble(FALSE, FALSE);
+		mNaviItem.setFinalNavi();
 
 		mLayout = new Layout(*mBg);
 		mLayout->setEDCfile(mMyEdj);
@@ -305,7 +318,7 @@ protected:
 		mSignupBtn->setText("Sign up");
 		mBtnBox->addBack(*mSignupBtn);
 
-		mLoginBtn = new LoginBtn(*mBtnBox,mIDEntry,mPwEntry);
+		mLoginBtn = new LoginBtn(*mBtnBox,parentNavi,&mNaviItem,mIDEntry,mPwEntry);
 		mLoginBtn->setAlignHint(EVAS_HINT_FILL, EVAS_HINT_FILL);
 		mLoginBtn->setWeightHint(EVAS_HINT_EXPAND, 0.0);
 		mLoginBtn->setText("Login");
@@ -372,11 +385,16 @@ protected:
 public:
 	MyLogin(Naviframe * parentNavi){
 		mLoginBtn = NULL;
+		mNaviItem = NaviItem();
 		mMyEdj = "login_layout";
 
-		if(autoLogin() == false)
-		{
+		if(autoLogin() == false){
 			drawUI(parentNavi);
+		}
+		else{
+			mNaviItem.unSetFinalNavi();
+			parentNavi->popItem();
+			new MyFoodView(parentNavi);
 		}
 	}
 };

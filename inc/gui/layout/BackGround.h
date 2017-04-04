@@ -8,4 +8,5 @@ public :
 	void setColor(int r, int g, int b);
 	void setOption(Elm_Bg_Option option);
 	void setImgFile(const std::string file, const std::string group);
+	void add(RootObj obj);
 };
