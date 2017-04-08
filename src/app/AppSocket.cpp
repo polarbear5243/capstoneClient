@@ -5,6 +5,7 @@
  *      Author: YJK
  */
 #include <app/AppSocket.h>
+#include <string.h>
 
 AppSocket::AppSocket(){
 	fd_set sock;
@@ -30,30 +31,34 @@ AppSocket::AppSocket(){
 	if(select(mSocket+1,&sock,NULL,NULL,&timeout) <= 0)
 		throw exception();
 
-/*    if (setsockopt (mSocket, SOL_SOCKET, SO_RCVTIMEO, (char *)&timeout, sizeof(timeout)) < 0)
-        throw exception();*/
-
-/*	if(mSocket < 0) {
-		throw exception();
-	}*/
 	if(connect(mSocket,(sockaddr *)&server, sizeof(server)) < 0){
 		throw exception();
 	}
 }
 void AppSocket::sendData(string str){
+	const char * tmp = str.c_str();
 	if(send(mSocket,str.c_str(),str.length(), 0) < 0)
 		throw exception();
 }
 string AppSocket::receiveData(){
 
 	char * buf = new char[BUF_SIZE];
+	string result = "";
 
-	if(recv(mSocket,buf,BUF_SIZE,0) < 0)
+	while(true)
 	{
-		throw exception();
-	}
+		int len = recv(mSocket,buf,BUF_SIZE-1,0);
 
-	string result(buf);
+		if( len < 0)
+			throw exception();
+
+		buf[len] = '\0';
+		result += buf;
+
+		//"!@#$" 데이터를 다 보냈다는 신호
+		if( strcmp((buf+len-4),"!@#$") == 0)
+			break;
+	}
 	delete buf;
 
 	return result;

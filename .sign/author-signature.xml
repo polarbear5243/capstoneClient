@@ -4,7 +4,7 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="bin%2Fclient">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>hqsu0tZHJk/oMec1CtRDAZEOkJtMy7h9bibH4I68bto=</DigestValue>
+<DigestValue>zvbSiFfcRvuEBOOm4Djl7A1iIr++3LOoSG7+W+qbYwg=</DigestValue>
 </Reference>
 <Reference URI="res%2Fapp_view.edc">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -31,11 +31,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-r1kDms+h7awWo9GeojJezYSWAyAOUZ7UlDpEdWRPCgfVCoIp7o+4HLhNq1hjueHnvy7mS+fluMew
-GQQJx6THCL8AUDbTAwEsLtPKKB5F8/8yuQs+6rdfrkRXr2bHyMqcTMcSNFO8M/GW8w+X9nwxe9Fg
-heNFy5bPWgynCmALTou09RJOvRvHBfBSQ9ME+Jyxcq9UsWrGEn69SVWt+QkPtfdmvbCIPJVmK8pw
-1Q6YV75hlSwdko4MGs4yS5xkftbajw5CVBu68tjYAXt8agycR7KGM0UAPj6LTIESKZVHZTTjxPK1
-NlwMBeyoicGu4KYokiA2yGEtnwWlyK9JiSYzSA==
+mng+o87jg9FyF2XMMyjki9X9n3K97lKezg75qNdMqaoDK+aNN6saLz0d7RSbLKPCspXLiIvkCHF0
+rKvsD0nIGzj5FkZMJxDqEtUIPHEYn/DwTp9NKDtH6X5ncW5Xa+HHzzh/Sfi18fKS4QVWtecEIUHc
+fMCA7Q95gSsfqj7YtNs+67768HfAauGJ+wBE1uG82HSuT6zARHjUvMN65EXnnHst6Yy0tyQPNzSE
++5WzMEuoHd1tcXv4BDVucH/0tCJmYu+zx2Dolh2b8XWZpuZKdTwo0bKgvN0/D3iV5jk3I40iJ78g
+JNGNQxnakhiKI5a8E+Ul7F50gJqfr6Mjzf860Q==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

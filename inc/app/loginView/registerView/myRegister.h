@@ -108,6 +108,7 @@ class MyRegister
 				elm_object_text_set(toast->getContent(), "비밀전호가 일치하지 않습니다.");
 				toast->setTimeout(2.0);
 			}
+			delete mRegSocket;
 		}
 	};
 private:

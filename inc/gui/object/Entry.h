@@ -19,6 +19,9 @@ private:
 public:
 	Entry(UILayout parent);
 	string getText();
+	void setText(string str);
+	void setEnable();
+	void setDisable();
 	Eina_Bool isEmpty();
 	void setStyle(string str);
 	void setPasswdMode();

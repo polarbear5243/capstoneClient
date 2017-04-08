@@ -15,31 +15,41 @@
 #include"gui/layout/Scroll.h"
 #include"gui/object/List.h"
 
-#include"SearchButton.h"
-#include"BackButton.h"
-#include"AddButton.h"
+#include "FoodMainAddButton.h"
+#include "FoodMainBackButton.h"
+#include "FoodMainSearchButton.h"
+#include "FoodMainView.h"
+#include "FoodMainFoodList.h"
 
-using namespace FoodMain;
-
-class MyFoodView
+class FoodMainView
 {
+private:
+	static FoodMainView * mInstance;
+public:
+	static FoodMainView * getInstance(){
+		return mInstance;
+	}
 private:
 	Background * mBackground;
 	Layout * mLayout;
 	Scroll * mScroller;
 
 	Entry * mSearchEntrty;
-	SearchButton * mSearchBtn;
+	FoodMainSearchButton * mSearchBtn;
 
-	List * mfoodList;
+	FoodMainFoodList * mfoodList;
 
-	BackButton * mBackBtn;
-	AddButton * mAddBtn;
+	FoodMainBackButton * mBackBtn;
+	FoodMainAddButton * mAddBtn;
 
 	NaviItem mNaviItem;
 public:
-	MyFoodView(Naviframe* parent){
+	FoodMainView(Naviframe* parent){
+		mInstance = this;
+
 		mNaviItem = NaviItem();
+		mSearchEntrty = NULL;
+		mfoodList = NULL;
 
 		drawUI(parent);
 	}
@@ -63,22 +73,23 @@ public:
 		mSearchEntrty->setScrollable();
 		mLayout->setContent("elm.swallow.searchEntry",*mSearchEntrty);
 
-		mSearchBtn = new SearchButton(*mLayout);
-		mSearchBtn->setWeightHint(EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
-		mLayout->setContent("elm.swallow.searchBtn",*mSearchBtn);
-
-		mfoodList = new List(*mLayout);
+		mfoodList = new FoodMainFoodList(*mLayout, parent);
 		mfoodList->setWeightHint(EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
 		mLayout->setContent("elm.swallow.foodList",*mfoodList);
 
-		mBackBtn = new BackButton(*mLayout);
+		mBackBtn = new FoodMainBackButton(*mLayout);
 		mBackBtn->setWeightHint(EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
 		mLayout->setContent("elm.swallow.backButtons",*mBackBtn);
 
-		mAddBtn = new AddButton(*mLayout,parent);
+		mSearchBtn = new FoodMainSearchButton(*mLayout,mSearchEntrty, mfoodList);
+		mSearchBtn->setWeightHint(EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
+		mLayout->setContent("elm.swallow.searchBtn",*mSearchBtn);
+
+		mAddBtn = new FoodMainAddButton(*mLayout,parent, mfoodList);
 		mAddBtn->setText("추가");
 		mBackBtn->setWeightHint(EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
 		mLayout->setContent("elm.swallow.addButtons",*mAddBtn);
 
 	}
 };
+FoodMainView * FoodMainView::mInstance = NULL;

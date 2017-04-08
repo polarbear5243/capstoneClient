@@ -13,7 +13,7 @@
 #include "app/loginView/registerView/myRegister.h"
 
 #include "app/mainView/MyMainScroll.h"
-#include "app/mainView/food/foodMain/MyFoodView.h"
+#include "app/Loding/Loding.h"
 
 #include "gui/object/Label.h"
 #include "gui/layout/Box.h"
@@ -116,7 +116,7 @@ class MyLogin
 
 					mNaviItem->unSetFinalNavi();
 					mNaviframe->popItem();
-					new MyFoodView(mNaviframe);
+					new Loding(mNaviframe, mLoginEntry->getText());
 				}
 				else if(result.at(1).compare("UnExistID") == 0)
 				{
@@ -138,6 +138,7 @@ class MyLogin
 				elm_object_text_set(toast->getContent(), "failed to Network");
 				toast->setTimeout(2.0);
 			}
+			delete mySocket;
 		}
 	};
 	class RegisterBtn : public Button
@@ -333,7 +334,7 @@ protected:
 		if(strcmp(mFileIO->get_buffer(), "%AUTO%")==0)
 			mLoginBtn->click();
 	}
-	bool autoLogin(){
+	bool autoLogin(Naviframe * parentNavi){
 		try{
 			// ------------------------------파일 읽기---------------------------------------------
 			FileInput input(LOGIN_FILE_NAME);
@@ -355,6 +356,10 @@ protected:
 				toast->setStyle("toast");
 				elm_object_text_set(toast->getContent(), "Success to login");
 				toast->setTimeout(2.0);
+
+				mNaviItem.unSetFinalNavi();
+				parentNavi->popItem();
+				new Loding(parentNavi, id);
 
 				return true;
 			}
@@ -388,13 +393,8 @@ public:
 		mNaviItem = NaviItem();
 		mMyEdj = "login_layout";
 
-		if(autoLogin() == false){
+		if(autoLogin(parentNavi) == false){
 			drawUI(parentNavi);
-		}
-		else{
-			mNaviItem.unSetFinalNavi();
-			parentNavi->popItem();
-			new MyFoodView(parentNavi);
 		}
 	}
 };

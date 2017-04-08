@@ -6,6 +6,7 @@ void ListItem::selected_cb(void *data, Evas_Object *obj, void *event_info){
 
 ListItem::ListItem(string title){
 	mTitle = title;
+	mContent = NULL;
 }
 
 void ListItem::selected(){

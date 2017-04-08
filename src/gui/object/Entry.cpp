@@ -22,6 +22,15 @@ string Entry::getText(){
 	string result(text);
 	return result;
 }
+void Entry::setText(string str){
+	elm_entry_entry_set(mContent,str.c_str());
+}
+void Entry::setEnable(){
+	elm_object_disabled_set(mContent,EINA_FALSE);
+}
+void Entry::setDisable(){
+	elm_object_disabled_set(mContent,EINA_TRUE);
+}
 Eina_Bool Entry::isEmpty()
 {
 	return elm_entry_is_empty(mContent);

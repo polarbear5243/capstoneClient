@@ -1,4 +1,8 @@
 #pragma once
+#include <app/mainView/food/foodAdd/FoodAddBackButton.h>
+#include <app/mainView/food/foodAdd/FoodAddFoodList.h>
+#include <app/mainView/food/foodAdd/FoodAddSearchButton.h>
+#include <app/mainView/food/foodMain/FoodMainFoodList.h>
 #include"gui/layout/Box.h"
 #include"gui/layout/Naviframe.h"
 #include"gui/object/Entry.h"
@@ -8,29 +12,43 @@
 #include"gui/layout/Scroll.h"
 #include"gui/object/List.h"
 
-#include"BackButton.h"
-#include"SearchButton.h"
+#include"FoodAddSocket.h"
 
-using namespace FoodMain;
+#include<vector>
+#include"app/DataModel/Groceries.h"
 
-class FoodAdd
+
+using namespace std;
+
+class FoodAddView
 {
 private:
+	vector<Groceries> mList;
+	FoodMainFoodList * mParentList;
+
 	Background * mBackground;
 	Layout * mLayout;
 	Scroll * mScroller;
 
 	Entry * mSearchEntrty;
-	SearchButton * mSearchBtn;
+	FoodAddSearchButton * mSearchBtn;
 
-	List * mfoodList;
+	FoodAddFoodList * mfoodList;
 
-	BackButton * mBackBtn;
+	FoodAddBackButton * mBackBtn;
 
 	NaviItem mNaviItem;
+
 public:
-	FoodAdd(Naviframe* parent){
+	FoodAddView(Naviframe* parent, FoodMainFoodList * foodList){
 		mNaviItem = NaviItem();
+		mfoodList = NULL;
+		mSearchEntrty = NULL;
+		mParentList = foodList;
+
+		FoodAddSocket * socket = new FoodAddSocket();
+		mList = socket->getAllIngredient();
+		delete socket;
 
 		drawUI(parent);
 	}
@@ -54,13 +72,13 @@ public:
 		mSearchEntrty->setScrollable();
 		mLayout->setContent("elm.swallow.searchEntry",*mSearchEntrty);
 
-		mSearchBtn = new SearchButton(*mLayout);
-		mLayout->setContent("elm.swallow.searchBtn",*mSearchBtn);
-
-		mfoodList = new List(*mLayout);
+		mfoodList = new FoodAddFoodList(*mLayout, &mList, mParentList);
 		mLayout->setContent("elm.swallow.foodList",*mfoodList);
 
-		mBackBtn = new BackButton(*mLayout);
+		mSearchBtn = new FoodAddSearchButton(*mLayout, mSearchEntrty, mfoodList);
+		mLayout->setContent("elm.swallow.searchBtn",*mSearchBtn);
+
+		mBackBtn = new FoodAddBackButton(*mLayout, parent);
 		mLayout->setContent("elm.swallow.backButtons",*mBackBtn);
 	}
 };

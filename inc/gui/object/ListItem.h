@@ -14,6 +14,7 @@ private:
 	static void selected_cb(void *data, Evas_Object *obj, void *event_info);
 protected:
 	string mTitle;
+	Elm_Object_Item * mContent;
 public:
 	ListItem(string title);
 

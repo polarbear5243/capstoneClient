@@ -27,6 +27,6 @@ string AppParser::wrapMsg(vector<string> str){
 	for(int i=0;i<str.size()-1;i++)
 		result = result + str[i] + delimiter;
 	result = result + str[str.size()-1];
-	result = result + endStr;
+//	result = result + endStr;
 	return result;
 }

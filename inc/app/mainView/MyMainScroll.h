@@ -7,6 +7,7 @@
 
 #pragma once
 #include <app/AppSocket.h>
+#include <app/mainView/food/foodMain/FoodMainView.h>
 #include"gui/object/Label.h"
 #include"gui/layout/Box.h"
 #include"gui/layout/Conformant.h"
@@ -19,8 +20,6 @@
 #include"gui/object/popup.h"
 #include"gui/object/Toolbar.h"
 #include "app/mainView/recipe/MyRecipeView.h"
-#include "app/mainView/food/foodMain/MyFoodView.h"
-
 #include <system_info.h>
 
 #include<string>
@@ -64,7 +63,7 @@ private:
 	Box* mBoxofScroller;
 
 	MyRecipeView* mRecipeView;
-	MyFoodView* mFoodView;
+	FoodMainView * mFoodView;
 public:
 	MyMainScroll(Naviframe * parentNavi){
 		mMyEdj = "login_layout";
