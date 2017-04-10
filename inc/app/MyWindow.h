@@ -31,6 +31,7 @@ protected:
 
 		mCoformant = new Conformant(*this);
 		mNaviframe = new Naviframe(*mCoformant);
+		mNaviframe->unSetAutioBackBtn();
 		mCoformant->add(*mNaviframe);
 
 		mMyLogin = new MyLogin(mNaviframe);

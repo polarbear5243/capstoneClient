@@ -1,5 +1,5 @@
 #include <app/DataModel/UserInfo.h>
-#include <app/mainView/food/foodMain/FoodMainView.h>
+#include <app/mainView/MainViewl.h>
 #include"app/AppSocket.h"
 #include"app/AppParser.h"
 
@@ -32,12 +32,7 @@ public:
 			i+=2;
 		}
 
-		Popup* toast = new Popup();
-		toast->setStyle("toast");
-		elm_object_text_set(toast->getContent(), "초기화 완료");
-		toast->setTimeout(2.0);
-
-		new FoodMainView(parent);
+		new MainViewl(parent);
 
 	}
 };

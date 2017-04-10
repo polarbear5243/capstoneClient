@@ -10,9 +10,9 @@
 #include <app/fileIO/FileInput.h>
 #include <app/fileIO/FileIO.h>
 #include <app/fileIO/FileOutput.h>
+#include <app/mainView/MainViewl.h>
 #include "app/loginView/registerView/myRegister.h"
 
-#include "app/mainView/MyMainScroll.h"
 #include "app/Loding/Loding.h"
 
 #include "gui/object/Label.h"

@@ -77,7 +77,7 @@ public:
 		mfoodList->setWeightHint(EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
 		mLayout->setContent("elm.swallow.foodList",*mfoodList);
 
-		mBackBtn = new FoodMainBackButton(*mLayout);
+		mBackBtn = new FoodMainBackButton(*mLayout, parent);
 		mBackBtn->setWeightHint(EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
 		mLayout->setContent("elm.swallow.backButtons",*mBackBtn);
 
