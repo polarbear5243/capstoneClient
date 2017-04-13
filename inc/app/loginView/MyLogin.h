@@ -100,7 +100,10 @@ class MyLogin
 				system_info_get_platform_string("http://tizen.org/system/tizenid",&tempStr);
 				string deviceid = tempStr;
 
-				vector<string> result = mySocket->manulLogin(mLoginEntry->getText(),mPWEntry->getText(),deviceid);
+				string id = mLoginEntry->getText();
+				string pw = mPWEntry->getText();
+
+				vector<string> result = mySocket->manulLogin(id,pw,deviceid);
 
 				if(result.at(0).compare("Success") == 0)
 				{
@@ -116,7 +119,8 @@ class MyLogin
 
 					mNaviItem->unSetFinalNavi();
 					mNaviframe->popItem();
-					new Loding(mNaviframe, mLoginEntry->getText());
+
+					Loding * loding = new Loding(mNaviframe,id);
 				}
 				else if(result.at(1).compare("UnExistID") == 0)
 				{

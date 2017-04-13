@@ -1,34 +1,77 @@
 
 group { name: "recipe_info_layout";
    parts {
-      part { name: "swallow_buttons_below";
-         type: SWALLOW;
+      part { name: "rect_dEol";
+         type: RECT;
          scale: 1;
          description { state: "default" 0.0;
+            color: 245 245 245 255;
             visible: 1;
             align: 0.5 0.5;
-            rel1.relative: 0.00 0.80;
-            rel2.relative: 1.00 1.00;
+            rel1.relative: 0.10 0.025;
+            rel2.relative: 0.90 0.60;
          }
       }
-      part { name: "swallow_buttons_above";
+      part { name: "swallow_info_entry";
          type: SWALLOW;
          scale: 1;
          description { state: "default" 0.0;
             visible: 1;
             align: 0.5 0.5;
-            rel1.relative: 0.00 0.70;
-            rel2.relative: 1.00 0.80;
+            rel1.relative: 0.10 0.025;
+            rel2.relative: 0.90 0.60;
+            fixed: 1 1;
          }
       }
-      part { name: "swallow_content";
+      part { name: "rect_inRd2";
+         type: RECT;
+         scale: 1;
+         description { state: "default" 0.0;
+            color: 245 245 245 255;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.15 0.625;
+            rel2.relative: 0.50 0.725;
+         }
+      }
+      part { name: "swallow_evaluation_entry";
          type: SWALLOW;
          scale: 1;
          description { state: "default" 0.0;
             visible: 1;
             align: 0.5 0.5;
-            rel1.relative: 0.00 0.00;
-            rel2.relative: 1.00 0.70;
+            rel1.relative: 0.15 0.625;
+            rel2.relative: 0.50 0.725;
+         }
+      }
+      part { name: "swallow_evaluation_button";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.55 0.625;
+            rel2.relative: 0.85 0.725;
+         }
+      }
+      part { name: "swallow_feedback_button";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.10 0.75;
+            rel2.relative: 0.90 0.85;
+         }
+      }
+      part { name: "swallow_back_button";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.10 0.875;
+            rel2.relative: 0.90 0.975;
          }
       }
    }

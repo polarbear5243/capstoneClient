@@ -14,6 +14,7 @@
 #include"gui/layout/Scroll.h"
 #include"gui/layout/BackGround.h"
 
+#include "app/fileIO/FileOutput.h"
 #include <app/mainView/food/foodMain/FoodMainView.h>
 #include <app/mainView/recipe/RecipeMain/RecipeMainView.h>
 
@@ -82,7 +83,9 @@ class MainViewl
 		}
 		void click()
 		{
-
+			FileOutput output("login.txt");
+			output.close();
+			ui_app_exit();
 		}
 	};
 private:
@@ -106,7 +109,9 @@ protected:
 		mBg->setColor(255,255,255);
 
 		Button nullBtn;
-		parentNavi->addItem("메인",nullBtn,nullBtn,*mBg,"").setTitleEnalble(TRUE, TRUE);
+		NaviItem naviItem = parentNavi->addItem("메인",nullBtn,nullBtn,*mBg,"");
+		naviItem.setTitleEnalble(TRUE, TRUE);
+		naviItem.setFinalNavi();
 
 		mScroll = new Scroll(*mBg);
 		elm_object_content_set(mBg->getContent(),mScroll->getContent());

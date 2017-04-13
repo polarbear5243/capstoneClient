@@ -4,20 +4,19 @@
 
 #include "app/mainView/recipe/RecipeInfo/RecipeInfoView.h"
 
-class ReceipeListRecipeList : public ListItem{
+class RecipeListRecipeItem : public ListItem{
 private:
 	Naviframe* mNaviframe;
-	string name;
-	string howtocook;
-	string category;
-	//등등...
+	string mRecipeId;
+	string mName;
+
 public:
-	ReceipeListRecipeList(string parent, Naviframe * naviframe) : ListItem(parent) {
-		name = parent;
+	RecipeListRecipeItem(string recipeName, string recipeId, Naviframe * naviframe) : ListItem(recipeName) {
+		mRecipeId = recipeId;
 		mNaviframe = naviframe;
 	}
 	void selected(){
-		RecipeInfoView* s = new RecipeInfoView(mNaviframe);
+		RecipeInfoView* s = new RecipeInfoView(mNaviframe, mRecipeId);
 	}
-	string getName(){ return name; }
+	string getName(){ return mName; }
 };

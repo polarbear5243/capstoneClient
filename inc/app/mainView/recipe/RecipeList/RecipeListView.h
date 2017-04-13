@@ -19,6 +19,8 @@
 #include"gui/object/ListItem.h"
 
 #include"RecipeListRecipeItem.h"
+#include"RecipeListRecipeList.h"
+#include"RecipeListSearchButton.h"
 
 //#include"app/MyRecipeInfo.h"
 
@@ -45,11 +47,17 @@ private:
 	Scroll* mScroll;
 	Layout* mLayout;
 	Box* mBox;
-	List* mList;
 
+	Entry * mSearchEntry;
+	RecipeListSearchButton * mSearchButton;
+
+	RecipeListRecipeList* mList;
 	BackBtn* mBtnBack;
 public:
 	RecipeListView(Naviframe* parentNavi){
+		mSearchEntry = NULL;
+		mList = NULL;
+
 		drawUI(parentNavi);
 	}
 	void drawUI(Naviframe* parentNavi){
@@ -65,15 +73,16 @@ public:
 		mLayout = new Layout(*mScroll);
 		mLayout->setEDCfile("recipe_view_layout");
 		mLayout->setWeightHint(EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		mLayout->setAlignHint(EVAS_HINT_FILL, EVAS_HINT_EXPAND);
 		mScroll->add(*mLayout);
 
-		mList = new List(*mLayout);
-		for(int i=0; i<20; i++){
-			ReceipeListRecipeList* items = new ReceipeListRecipeList("인도의 향기", parentNavi);
-			mList->addItem((ListItem*)items);
-		}
+		mSearchEntry = new Entry(*parentNavi);
+		mLayout->setContent("swallow_search_entry",*mSearchEntry);
+
+		mList = new RecipeListRecipeList(*mLayout, parentNavi);
 		mLayout->setContent("swallow_content", *mList);
+
+		mSearchButton = new RecipeListSearchButton(*parentNavi,mSearchEntry, mList);
+		mLayout->setContent("swallow_search_button", *mSearchButton);
 
 		mBox = new Box(*mLayout);
 		mLayout->setContent("swallow_buttons", *mBox);

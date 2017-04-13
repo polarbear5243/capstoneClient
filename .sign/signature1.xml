@@ -4,11 +4,11 @@
 <SignatureMethod Algorithm="http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"></SignatureMethod>
 <Reference URI="author-signature.xml">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>PVxACUSNB+C+hRE/dpQFlTEuuczSL/tGscCTgHjDmz0=</DigestValue>
+<DigestValue>0S0Vov8MiEyS2j95M0N1b5fs2G+yece21HTyXAlzwbw=</DigestValue>
 </Reference>
 <Reference URI="bin%2Fclient">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>AWo4KdZ7MUVGsMEQfsJTf87a/zWvBTNHgTcxE4vqW2I=</DigestValue>
+<DigestValue>R6qR1pif57+8hdws79D1V2edOBMHfmWFzrR11Q7LMhc=</DigestValue>
 </Reference>
 <Reference URI="res%2Fapp_view.edc">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -16,7 +16,7 @@
 </Reference>
 <Reference URI="res%2Fapp_view.edj">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
-<DigestValue>YSmpkCLtawDE9LdZVN6sdUWH03FM9juscH5skJlmwPo=</DigestValue>
+<DigestValue>Ksvt5VKxuabA5cmF5AiquMbN0/4njexyNLkr4sIkg58=</DigestValue>
 </Reference>
 <Reference URI="shared%2Fres%2Fclient.png">
 <DigestMethod Algorithm="http://www.w3.org/2001/04/xmlenc#sha256"></DigestMethod>
@@ -35,11 +35,11 @@
 </Reference>
 </SignedInfo>
 <SignatureValue>
-b35aN8jzGJvO3CgvWgXJZAKqQnxaTCeKgAIFHcfoQUS1bblzGya4He8MhnuIqfD1igUmvWlvkgLH
-79dte+TP8h1WvczRVjkt0j60aqUmU7OXKiBMTD0mVC3e+PIrOQEB9XOJ8iJJW9Qlhau+/r5car6F
-q7m2361i3+7unW0TcLrF8VS9yj8Di3H7BxpON8XaWJT212xx7+xuCZrNy8MPjoqUIenBFx93sD6f
-wwKB7ZpeIxGskcCMqqqlXl1VB+bl8iAhS1+RrzEKYHYut0QbuQEK85UPAYsNKnv/gWPB08gchKtG
-gSQFArEj8S39BXwmUKWqxotno+iqPd9qZXaa9A==
+CpLK9HOHza5to2HThJ14+gXYc/QYkAT1p0XhTOKTgmu9xYpsYVf8ZC2Hg4n0lfEBLUDaeLYHTXKi
+RB+yjK+uP0Oz3K58t52K2/Eiw7ks3/fmhGnKSd/Js02kxyjzmCkR7UQZGkGpUis/OtZt4/DXCXCN
+r5YRe2rHgOQZufnHTxuCPnI8s2wG3egHFQ03UQ5F+nmJWNo5aqNszDB0ehfvmh+Vk1RQqIBC/aYr
+gvyPlwsw+e2E93CU46Sz6LzOPgabN+98Of3Y5s+dTqJqu31sYFv+x2S0wYxV33K91fElC92dHC2X
+x61j2nPeWkUt9as+T8vGrNIV6TGmCF1o+wjkQg==
 </SignatureValue>
 <KeyInfo>
 <X509Data>

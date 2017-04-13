@@ -18,83 +18,38 @@
 #include"gui/object/List.h"
 #include"gui/object/ListItem.h"
 
+#include"RecipeInfoEvaluationButton.h"
+#include"RecipeInfoBackButton.h"
+#include"RecipeInfoFeedbackButton.h"
+#include"RecipeInfoSocket.h"
+
+#include <vector>
+#include <string>
+
+using namespace std;
+
 class RecipeInfoView
 {
-	class GoodBtn : public Button
-	{
-	private:
-		Naviframe* mNaviframe;
-	public:
-		GoodBtn(UILayout parent, Naviframe * naviframe) : Button(parent) {
-			mNaviframe = naviframe;
-			this->setText("조와요");
-			setMaxHint(300, 9999);
-		}
-		void click()
-		{
-
-		}
-	};
-	class BadBtn : public Button
-	{
-	private:
-		Naviframe* mNaviframe;
-	public:
-		BadBtn(UILayout parent, Naviframe * naviframe) : Button(parent) {
-			mNaviframe = naviframe;
-			this->setText("싫어요");
-			setMaxHint(300, 9999);
-		}
-		void click()
-		{
-
-		}
-	};
-	class FavBtn : public Button
-	{
-	private:
-		Naviframe* mNaviframe;
-	public:
-		FavBtn(UILayout parent, Naviframe * naviframe) : Button(parent) {
-			mNaviframe = naviframe;
-			this->setText("즐겨찾기");
-			setMaxHint(600, 9999);
-		}
-		void click()
-		{
-
-		}
-	};
-	class BackBtn : public Button
-	{
-	private:
-		Naviframe* mNaviframe;
-	public:
-		BackBtn(UILayout parent, Naviframe * naviframe) : Button(parent) {
-			mNaviframe = naviframe;
-			this->setText("뒤로가기");
-		}
-		void click()
-		{
-			mNaviframe->popItem();
-		}
-	};
 private:
-	//RecipeItem* mItem;
+	string mRecipeId;
+
 	Background* mBg;
 	Scroll* mScroll;
 	Layout* mLayout;
-	Box* mBoxInfo;
-	Label* mLabel;
-	Box* mBox;
-	Box* mBox2;
 
-	BackBtn* mBtnBack;
-	GoodBtn* mBtnGood;
-	BadBtn* mBtnBad;
-	FavBtn* mBtnFav;
+	Scroll* mEntryScroll;
+	Entry * mEntryRecipeInfo;
+
+	Entry * mEntryEvaluation;
+	RecipeInfoEvaluationButton* mBtnEvaluation;
+
+	RecipeInfoFeedbackButton* mBtnFeedBack;
+	RecipeInfoBackButton* mBtnBack;
+
 public:
-	RecipeInfoView(Naviframe* parentNavi){
+	RecipeInfoView(Naviframe* parentNavi, string recipeId){
+		mRecipeId = recipeId;
+
 		drawUI(parentNavi);
 	}
 	void drawUI(Naviframe* parentNavi){
@@ -105,40 +60,71 @@ public:
 		parentNavi->addItem("레시피 이름",nullBtn,nullBtn,*mBg,"").setTitleEnalble(TRUE, TRUE);
 
 		mScroll = new Scroll(*mBg);
-		elm_object_content_set(mBg->getContent(),mScroll->getContent());
+		mScroll->setWeightHint(EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
+		mBg->add(*mScroll);
 
 		mLayout = new Layout(*mScroll);
 		mLayout->setEDCfile("recipe_info_layout");
-		mLayout->setWeightHint(EVAS_HINT_EXPAND, EVAS_HINT_EXPAND);
-		mLayout->setAlignHint(EVAS_HINT_FILL, EVAS_HINT_EXPAND);
+		mLayout->setWeightHint(EVAS_HINT_EXPAND,EVAS_HINT_EXPAND);
 		mScroll->add(*mLayout);
 
-		mBoxInfo = new Box(*mLayout);
-		mLayout->setContent("swallow_content", *mBoxInfo);
-
-		//mLabel = new Label(*mBoxInfo);
-		//mLabel->setText(mItem->getName());
-		//mBoxInfo->addBack(*mLabel);
-
-		mBox = new Box(*mLayout);
-		mBox->setHorizontal();
-		mBox->setPadding(ELM_SCALE_SIZE(10), 0);
-		mLayout->setContent("swallow_buttons_above", *mBox);
-
-		mBtnGood = new GoodBtn(*mBox, parentNavi);
-		mBox->addBack(*mBtnGood);
-		mBtnBad = new BadBtn(*mBox, parentNavi);
-		mBox->addBack(*mBtnBad);
+		mEntryScroll = new Scroll(*mLayout);
+		mLayout->setContent("swallow_info_entry",*mEntryScroll);
 
 
-		mBox2 = new Box(*mLayout);
-		mLayout->setContent("swallow_buttons_below", *mBox2);
+		mEntryRecipeInfo = new Entry(*mEntryScroll);
+		mEntryRecipeInfo->setMultLine();
+		writeRecipeInfo();
+		mEntryRecipeInfo->setDisable();
+		mEntryScroll->add(*mEntryRecipeInfo);
 
-		mBtnFav = new FavBtn(*mBox2, parentNavi);
-		mBox2->addBack(*mBtnFav);
-		mBtnBack = new BackBtn(*mBox2, parentNavi);
-		mBox2->addBack(*mBtnBack);
+		mEntryEvaluation = new Entry(*mLayout);
+		mLayout->setContent("swallow_evaluation_entry",*mEntryEvaluation);
+		mBtnEvaluation = new RecipeInfoEvaluationButton(*mLayout,mEntryEvaluation,mRecipeId);
+		mLayout->setContent("swallow_evaluation_button",*mBtnEvaluation);
 
+		mBtnFeedBack = new RecipeInfoFeedbackButton(*mLayout);
+		mLayout->setContent("swallow_feedback_button",*mBtnFeedBack);
 
+		mBtnBack = new RecipeInfoBackButton(*mLayout,parentNavi);
+		mLayout->setContent("swallow_back_button",*mBtnBack);
+
+	}
+protected:
+	void writeRecipeInfo(){
+		mEntryRecipeInfo->setEnable();
+		RecipeInfoSocket * socket = new RecipeInfoSocket();
+
+		vector<string> msg = socket->getRecipe(mRecipeId);
+		string info = "";
+
+		int i=0;
+		info = info + "ID      :  " + msg[i++] + "<br/>";
+		info = info + "이름        :  " + msg[i++] + "<br/>";
+		info = info + "나라        :  " + msg[i++] + "<br/>";
+		info = info + "분류        :  " + msg[i++] + "<br/>";
+		info = info + "시간(분) :  " + msg[i++] + "<br/>";
+		info = info + "열량        :  " + msg[i++] + "<br/>";
+		info = info + "난이도     :  " + msg[i++] + "<br/>";
+		info = info + "재료" + "<br/>";
+		while(msg[i] != "End"){
+			info = info + msg[i] + ", ";
+			i++;
+		}
+		i++;
+
+		info = info + "<br/>" + "조리법" + "<br/>";
+
+		int start_i = i;
+		while(msg[i] != "End"){
+
+			char index[20];
+			sprintf(index,"%d",i-start_i+1);
+
+			info = info + index + ". " + msg[i] + "<br/>";
+			i++;
+		}
+
+		mEntryRecipeInfo->setText(info);
 	}
 };

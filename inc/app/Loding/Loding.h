@@ -16,9 +16,9 @@ public:
 		UserInfo::init(userID);
 		UserInfo * userInfo = UserInfo::getInstance();
 
-		LodingSocket socket;
+		LodingSocket * socket = new LodingSocket();
 
-		vector<string> userData = socket.getMyIngredient(userID);
+		vector<string> userData = socket->getMyIngredient(userID);
 
 		int i=1;
 		string id;
@@ -32,6 +32,7 @@ public:
 			i+=2;
 		}
 
+		delete socket;
 		new MainViewl(parent);
 
 	}
