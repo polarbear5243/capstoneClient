@@ -6,4 +6,5 @@ collections {
    #include "../edje/food_modify_layout.edc"
    #include "../edje/recipe_info_layout.edc"
    #include "../edje/recipe_view_layout.edc"
+   #include "../edje/recommend_view.edc"
 }

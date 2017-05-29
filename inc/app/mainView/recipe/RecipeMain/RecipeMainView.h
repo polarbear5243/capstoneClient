@@ -13,7 +13,7 @@
 #include"gui/layout/BackGround.h"
 #include"gui/layout/Scroll.h"
 #include"app/mainView/recipe/RecipeList/RecipeListView.h"
-
+#include"app/mainView/recommend/RecommendView.h"
 class RecommendBtn : public Button
 {
 private:
@@ -27,7 +27,7 @@ public:
 	}
 	void click()
 	{
-
+		RecommendView* s = new RecommendView(mNaviframe);
 	}
 };
 class RecipeBtn : public Button
