@@ -34,7 +34,7 @@ group { name: "recipe_info_layout";
             rel2.relative: 0.50 0.725;
          }
       }
-      part { name: "swallow_evaluation_entry";
+      part { name: "swallow_good_button";
          type: SWALLOW;
          scale: 1;
          description { state: "default" 0.0;
@@ -44,7 +44,7 @@ group { name: "recipe_info_layout";
             rel2.relative: 0.50 0.725;
          }
       }
-      part { name: "swallow_evaluation_button";
+      part { name: "swallow_bad_button";
          type: SWALLOW;
          scale: 1;
          description { state: "default" 0.0;

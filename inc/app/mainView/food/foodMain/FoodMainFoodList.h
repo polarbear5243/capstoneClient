@@ -12,6 +12,11 @@
 
 using namespace std;
 
+class EmptyListItem : public ListItem{
+public:
+	EmptyListItem() : ListItem("") { }
+};
+
 class FoodMainFoodList : public List, BreakCycle {
 private:
 	list<FoodMainFoodItem *> mListItem;
@@ -73,8 +78,12 @@ public:
 	}
 	void refresh(){
 		this->clear();
+
+		if(mListItem.empty() == true)
+			this->addItem(new EmptyListItem);
+
 		for(list<FoodMainFoodItem * >::iterator it = mListItem.begin();it != mListItem.end(); it++)
-			this->addItem((*it));
+			this->addItem(*it);
 	}
 	~FoodMainFoodList(){
 		for(list<FoodMainFoodItem * >::iterator it = mListItem.begin();it != mListItem.end(); it++)

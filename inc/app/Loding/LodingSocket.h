@@ -22,7 +22,20 @@ public:
 
 		return msg;
 	}
+	bool userFirstVisit(string userid){
+		vector<string> msg;
+		msg.push_back("Survey");
+		msg.push_back("FirstVisit");
+		msg.push_back(userid);
 
+		mSocket->sendData(AppParser::wrapMsg(msg));
+		msg = AppParser::parsingMsg(mSocket->receiveData());
+
+		if(msg[0].compare("True")==0)
+			return true;
+
+		return false;
+	}
 	~LodingSocket(){
 		delete mSocket;
 	}

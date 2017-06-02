@@ -18,6 +18,8 @@
 #include"gui/object/List.h"
 #include"gui/object/ListItem.h"
 
+#include"RecipeInfoGoodButton.h"
+#include"RecipeInfoBadButton.h"
 #include"RecipeInfoEvaluationButton.h"
 #include"RecipeInfoBackButton.h"
 #include"RecipeInfoFeedbackButton.h"
@@ -42,6 +44,9 @@ private:
 
 	Entry * mEntryEvaluation;
 	RecipeInfoEvaluationButton* mBtnEvaluation;
+
+	RecipeInfoBadButton* mBtnBad;
+	RecipeInfoGoodButton* mBtnGood;
 
 	RecipeInfoFeedbackButton* mBtnFeedBack;
 	RecipeInfoBackButton* mBtnBack;
@@ -78,10 +83,18 @@ public:
 		mEntryRecipeInfo->setDisable();
 		mEntryScroll->add(*mEntryRecipeInfo);
 
-		mEntryEvaluation = new Entry(*mLayout);
+		mBtnBad = new RecipeInfoBadButton(*mLayout,mRecipeId);
+		mLayout->setContent("swallow_bad_button",*mBtnBad);
+
+		mBtnGood = new RecipeInfoGoodButton(*mLayout,mRecipeId);
+		mLayout->setContent("swallow_good_button",*mBtnGood);
+
+
+
+/*		mEntryEvaluation = new Entry(*mLayout);
 		mLayout->setContent("swallow_evaluation_entry",*mEntryEvaluation);
 		mBtnEvaluation = new RecipeInfoEvaluationButton(*mLayout,mEntryEvaluation,mRecipeId);
-		mLayout->setContent("swallow_evaluation_button",*mBtnEvaluation);
+		mLayout->setContent("swallow_evaluation_button",*mBtnEvaluation);*/
 
 		mBtnFeedBack = new RecipeInfoFeedbackButton(*mLayout);
 		mLayout->setContent("swallow_feedback_button",*mBtnFeedBack);

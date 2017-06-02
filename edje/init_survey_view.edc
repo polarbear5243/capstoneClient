@@ -1,18 +1,6 @@
-
-group { name: "recommend_view";
+group { name: "init_survey_view";
    parts {
-      part { name: "recommend_button";
-         type: SWALLOW;
-         scale: 1;
-         description { state: "default" 0.0;
-            visible: 1;
-            align: 0.5 0.5;
-            rel1.relative: 0.10 0.82;
-            rel2.relative: 0.90 0.950;
-            fixed: 1 1;
-         }
-      }
-      part { name: "recommend_entry";
+      part { name: "survey_entry";
          type: SWALLOW;
          scale: 1;
          description { state: "default" 0.0;
@@ -23,25 +11,25 @@ group { name: "recommend_view";
             fixed: 1 1;
          }
       }
-      part { name: "prefer_label";
+      part { name: "like_button";
          type: SWALLOW;
          scale: 1;
          description { state: "default" 0.0;
             visible: 1;
             align: 0.5 0.5;
-            rel1.relative: 0.1000 0.65;
-            rel2.relative: 0.4000 0.70;
+            rel1.relative: 0.1000 0.80;
+            rel2.relative: 0.4800 0.95;
             fixed: 1 1;
          }
       }
-      part { name: "prefer_hoversel";
+      part { name: "dislike_button";
          type: SWALLOW;
          scale: 1;
          description { state: "default" 0.0;
             visible: 1;
             align: 0.5 0.5;
-            rel1.relative: 0.1000 0.72;
-            rel2.relative: 0.9000 0.80;
+            rel1.relative: 0.5200 0.80;
+            rel2.relative: 0.9000 0.95;
             fixed: 1 1;
          }
       }

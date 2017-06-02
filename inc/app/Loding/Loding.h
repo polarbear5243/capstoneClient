@@ -4,6 +4,7 @@
 #include"app/AppParser.h"
 
 #include"gui/layout/Naviframe.h"
+#include"app/mainView/survey/SurveyView.h"
 #include"LodingSocket.h"
 
 #include<string>
@@ -16,6 +17,7 @@ public:
 		UserInfo::init(userID);
 		UserInfo * userInfo = UserInfo::getInstance();
 
+		// 개인정보 로드
 		LodingSocket * socket = new LodingSocket();
 
 		vector<string> userData = socket->getMyIngredient(userID);
@@ -31,9 +33,16 @@ public:
 			userInfo->addGroceries(id,name);
 			i+=2;
 		}
-
 		delete socket;
-		new MainViewl(parent);
 
+		socket = new LodingSocket();
+		bool sw = socket->userFirstVisit(userID);
+		delete socket;
+
+		//첫 로그인인지
+		if(sw)
+			new SurveyView(parent);
+		else
+			new MainViewl(parent);
 	}
 };

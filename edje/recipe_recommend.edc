@@ -1,0 +1,114 @@
+group { name: "recipe_recommend";
+   parts {
+      part { name: "recommend_button";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.10 0.89;
+            rel2.relative: 0.90 0.970;
+            fixed: 1 1;
+         }
+      }
+      part { name: "recommend_entry";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.1000 0.05;
+            rel2.relative: 0.9000 0.40;
+            fixed: 1 1;
+         }
+      }
+      part { name: "prefer_label1";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.1000 0.42;
+            rel2.relative: 0.3 0.52;
+            fixed: 1 1;
+         }
+      }
+      part { name: "prefer_label2";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.1000 0.54;
+            rel2.relative: 0.3 0.64;
+            fixed: 1 1;
+         }
+      }
+      part { name: "prefer_label3";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.1000 0.66;
+            rel2.relative: 0.3 0.76;
+            fixed: 1 1;
+         }
+      }
+      part { name: "prefer_label4";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.1000 0.78;
+            rel2.relative: 0.3 0.88;
+            fixed: 1 1;
+         }
+      }
+      part { name: "prefer_hoversel1";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.350 0.42;
+            rel2.relative: 0.8 0.52;
+            fixed: 1 1;
+         }
+      }
+      part { name: "prefer_hoversel2";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.350 0.54;
+            rel2.relative: 0.8 0.64;
+            fixed: 1 1;
+         }
+      }
+      part { name: "prefer_hoversel3";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.350 0.66;
+            rel2.relative: 0.8 0.76;
+            fixed: 1 1;
+         }
+      }
+      part { name: "prefer_hoversel4";
+         type: SWALLOW;
+         scale: 1;
+         description { state: "default" 0.0;
+            visible: 1;
+            align: 0.5 0.5;
+            rel1.relative: 0.350 0.78;
+            rel2.relative: 0.8 0.88;
+            fixed: 1 1;
+         }
+      }
+   }
+}

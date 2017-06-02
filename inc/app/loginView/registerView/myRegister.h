@@ -85,7 +85,13 @@ class MyRegister
 			string pw = mPWEntry->getText();
 			string re = mReEntry->getText();
 
-			if(pw.compare(re) == 0){
+			if(id.length() > 15){
+				Popup* toast = new Popup();
+				toast->setStyle("toast");
+				elm_object_text_set(toast->getContent(), "ID는 15자 이하로 만들어 주세요.");
+				toast->setTimeout(2.0);
+			}
+			else if(pw.compare(re) == 0){
 				vector<string> result = mRegSocket->regeister(id,pw);
 
 				if(result.at(0).compare("Success") == 0){
@@ -158,7 +164,7 @@ protected:
 		mEmailLabel = new Label(*mInputBox);
 		mEmailLabel->setAlignHint(0.05, EVAS_HINT_FILL);
 		mEmailLabel->setWeightHint(EVAS_HINT_EXPAND, 0.0);
-		mEmailLabel->setText("<b>Email Account</b>");
+		mEmailLabel->setText("<b>ID</b>");
 		mInputBox->addBack(*mEmailLabel);
 
 		mIDLayout = new Layout(*mInputBox);

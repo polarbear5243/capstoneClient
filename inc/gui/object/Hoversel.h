@@ -20,7 +20,7 @@ public:
 	void addItem(string str);
 	void setName(string str);
 protected:
-	virtual void clicked();
-	virtual void selected();
-	virtual void dismissed();
+	virtual void clicked(void * event_info);
+	virtual void selected(void * event_info);
+	virtual void dismissed(void * event_info);
 };
