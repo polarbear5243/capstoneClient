@@ -133,8 +133,8 @@ protected:
 		mBtnRecipe = new RecipeBtn(*mBox, parentNavi);
 		mBox->addBack(*mBtnRecipe);
 
-		mBtnLog = new LogBtn(*mBox, parentNavi);
-		mBox->addBack(*mBtnLog);
+		//mBtnLog = new LogBtn(*mBox, parentNavi);
+		//mBox->addBack(*mBtnLog);
 
 		mBtnLogout = new LogoutBtn(*mBox, parentNavi);
 		mBox->addBack(*mBtnLogout);

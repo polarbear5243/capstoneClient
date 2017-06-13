@@ -96,8 +96,8 @@ public:
 		mBtnEvaluation = new RecipeInfoEvaluationButton(*mLayout,mEntryEvaluation,mRecipeId);
 		mLayout->setContent("swallow_evaluation_button",*mBtnEvaluation);*/
 
-		mBtnFeedBack = new RecipeInfoFeedbackButton(*mLayout);
-		mLayout->setContent("swallow_feedback_button",*mBtnFeedBack);
+	//	mBtnFeedBack = new RecipeInfoFeedbackButton(*mLayout);
+	//	mLayout->setContent("swallow_feedback_button",*mBtnFeedBack);
 
 		mBtnBack = new RecipeInfoBackButton(*mLayout,parentNavi);
 		mLayout->setContent("swallow_back_button",*mBtnBack);

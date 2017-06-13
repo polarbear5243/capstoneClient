@@ -272,7 +272,7 @@ protected:
 		mEmailLabel = new Label(*mInputBox);
 		mEmailLabel->setAlignHint(0.05, EVAS_HINT_FILL);
 		mEmailLabel->setWeightHint(EVAS_HINT_EXPAND, 0.0);
-		mEmailLabel->setText("<b>Email Account</b>");
+		mEmailLabel->setText("<b>ID</b>");
 		mInputBox->addBack(*mEmailLabel);
 
 		mIDLayout = new Layout(*mInputBox);
@@ -385,7 +385,7 @@ protected:
 
 				return false;
 			}
-		}catch(exception e){
+		}catch(const exception &e){
 			return false;
 		}
 		return false;

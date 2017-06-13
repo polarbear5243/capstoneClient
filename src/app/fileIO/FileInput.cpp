@@ -14,8 +14,10 @@ FileInput::FileInput(string file){
 	mFilePath = defultPath + "/" + file;
 	mFile = new ifstream(mFilePath.c_str());
 
-	if(!(*mFile))
-		throw new exception;
+	if(!(*mFile)){
+		ofstream(mFilePath.c_str());
+		mFile = new ifstream(mFilePath.c_str());
+	}
 }
 string FileInput::read(){
 	string str;

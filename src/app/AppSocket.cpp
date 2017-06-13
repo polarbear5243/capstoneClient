@@ -10,7 +10,8 @@
 AppSocket::AppSocket(){
 	fd_set sock;
 	sockaddr_in server;
-	server.sin_addr.s_addr = inet_addr("192.168.0.15");
+//	server.sin_addr.s_addr = inet_addr("192.168.0.15");
+	server.sin_addr.s_addr = inet_addr("192.168.43.37");
 
 	server.sin_family = AF_INET;
 	server.sin_port = htons(SERVER_PORT);
